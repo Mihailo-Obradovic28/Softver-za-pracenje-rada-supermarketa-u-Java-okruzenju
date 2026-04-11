@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/kupci/KreirajKupcaOperacija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/kupci/ObrisiKupcaOperacija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/main/Main.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/server/Server.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/repository/db/DbConnectionFactory.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/ApstraktnaGenerickaOperacija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/controller/Controller.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/repository/db/DbRepository.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/kupci/UcitajTipoveKupacaSO.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/kupci/UcitajKupceOperacija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/repository/Repository.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/konfiguracija/Konfiguracija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/login/LoginOperacija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/niti/ObradaKlijentskihZahteva.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/repository/db/impl/DbRepositoryGeneric.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_SERVER/src/operacija/kupci/AzurirajKupcaOperacija.java</file>
+        </group>
+    </open-files>
+</project-private>
