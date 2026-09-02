@@ -10,6 +10,7 @@ import model.ApstraktniDomenskiObjekat;
 import repository.db.DbRepository;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import model.Roba;
 import repository.db.DbConnectionFactory;
 /**
  *
@@ -87,6 +88,17 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
         rs.close();
         st.close();
         return id;
+    }
+
+    @Override
+    public void azurirajZalihe(ApstraktniDomenskiObjekat param, int razlika) throws Exception {
+        if(!(param instanceof Roba))return;
+        String upit = "UPDATE roba set stanjeZaliha= stanjeZaliha + (" + razlika + ")"+
+                " WHERE "+param.vratiPrimarniKljuc();
+        System.out.println(upit);
+        Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
+        st.executeUpdate(upit);
+        st.close();
     }
 
 

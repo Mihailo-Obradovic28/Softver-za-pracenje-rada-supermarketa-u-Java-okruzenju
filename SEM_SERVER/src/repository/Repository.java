@@ -13,10 +13,11 @@ import java.util.List;
 //crud operacije svih tabela
 
 public interface Repository <T>{
-    List<T> getAll(T param,String uslov) throws Exception;//kada radim pretragu
+    List<T> getAll(T param,String uslov) throws Exception;
     void add(T param) throws Exception;
     void edit(T param) throws Exception;
     void delete(T param) throws Exception;
     List<T> getAll();
     int addAndReturnId(T param) throws Exception;
+    void azurirajZalihe(T param, int novoStanje) throws Exception;//nije hteo mi lepo azurira zalihe probam sa ovim
 }

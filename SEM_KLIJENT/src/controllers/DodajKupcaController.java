@@ -44,40 +44,58 @@ public class DodajKupcaController {
                 String name = dkf.getjTextFieldIme().getText().trim();
                 String lastname = dkf.getjTextFieldPrezime().getText().trim();
                 String email = dkf.getjTextFieldEmail().getText().trim();
-                int god = Integer.parseInt(dkf.getjTextFieldGodine().getText());
+                
+                int god;
+                try {
+                    god = Integer.parseInt(dkf.getjTextFieldGodine().getText().trim());
+                } catch(NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(dkf, "Godine moraju biti broj", "Greska", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 TipKupca tip = (TipKupca) dkf.getjComboBoxTipKupca().getSelectedItem();
                 
                 Kupac k = new Kupac(-1,name,lastname,email,god,tip);
                 
                 try {
                     komunikacija.Komunikacija.getInstance().dodajKupca(k);
-                    JOptionPane.showMessageDialog(dkf, "Uspeh u dodavanju kupca","Uspeh",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dkf, "Sistem je zapamtio kupca","Uspeh",JOptionPane.INFORMATION_MESSAGE);
                     dkf.dispose();
                    
-                } catch (SocketException ex) {
-                    JOptionPane.showMessageDialog(dkf, "Greska u dodavanju kupca","Greska",JOptionPane.ERROR_MESSAGE);
+                } catch (Exception ex) {
+                    //JOptionPane.showMessageDialog(dkf, ex.getMessage(),"Greska",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dkf, "Sistem ne moze da zapamti kupca",ex.getMessage(),JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         dkf.azurirajAddActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                azuriraj(e);
-            } 
+                try {
+                    azuriraj(e);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(dkf, "Sistem ne moze da zapamti kupca", ex.getMessage(), JOptionPane.ERROR_MESSAGE);    
+                }
+            }   
 
-            private void azuriraj(ActionEvent e) {
+            private void azuriraj(ActionEvent e) throws Exception {
                 Kupac original = (Kupac) kordinator.Kordinator.getInstance().vratiParam("kupac");
                 String name = dkf.getjTextFieldIme().getText().trim();
                 String lastname = dkf.getjTextFieldPrezime().getText().trim();
                 String email = dkf.getjTextFieldEmail().getText().trim();
-                int god = Integer.parseInt(dkf.getjTextFieldGodine().getText());
+                int god=Integer.parseInt(dkf.getjTextFieldGodine().getText().trim());
+                /*try {
+                    god = Integer.parseInt(dkf.getjTextFieldGodine().getText().trim());
+                } catch(NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(dkf, "Godine moraju biti broj", "Greska", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }*/
                 TipKupca tip = (TipKupca) dkf.getjComboBoxTipKupca().getSelectedItem();
                 
                 Kupac k = new Kupac(original.getIdKupac(),name,lastname,email,god,tip);
                 try {
                     komunikacija.Komunikacija.getInstance().azurirajKupca(k);
                     JOptionPane.showMessageDialog(dkf, "Sistem je zapamtio kupca","Uspeh (azuriranje)",JOptionPane.INFORMATION_MESSAGE);
-                    
+                    dkf.dispose();
                 } catch (SocketException ex) {
                     JOptionPane.showMessageDialog(dkf, "Greska u azuriranju kupca","Greska",JOptionPane.ERROR_MESSAGE);
                 }
@@ -92,7 +110,7 @@ public class DodajKupcaController {
             JOptionPane.showMessageDialog(dkf, "Sistem je obrisao kupca", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
             kordinator.Kordinator.getInstance().osveziPregledKupcaForma();
             dkf.dispose();
-        } catch (SocketException ex) {
+        }catch (Exception ex) {
             JOptionPane.showMessageDialog(dkf, "Sistem ne moze da obrise kupca", "Greska", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -114,6 +132,7 @@ public class DodajKupcaController {
                 dkf.getjButtonDodajKupca().setEnabled(true);
                 dkf.getjButtonObrisi().setVisible(false);
                 dkf.getjButtonObrisi().setEnabled(false);
+                dkf.getjTextFieldGodine().setText(0+"");
                 break;
             case IZMENI:
                 dkf.getjButtonObrisi().setVisible(true);

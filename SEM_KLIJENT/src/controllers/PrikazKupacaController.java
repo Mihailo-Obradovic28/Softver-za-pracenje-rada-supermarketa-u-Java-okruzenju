@@ -81,14 +81,58 @@ public class PrikazKupacaController {
             }
 
             private void pretrazi(ActionEvent e) {
-                String name = pkf.getjTextFieldIme().getText().trim();
+                /*String name = pkf.getjTextFieldIme().getText().trim();
                 String lastname = pkf.getjTextFieldPrezime().getText().trim();
                 String email = pkf.getjTextFieldEmail().getText().trim();
                 TipKupca tip = (TipKupca) pkf.getjComboBoxTipKupca().getSelectedItem();
                 
                 ModelTabeleKupac mtk = (ModelTabeleKupac) pkf.getjTableKupci().getModel();
                 mtk.pretrazi(name,lastname,email,tip);
-                JOptionPane.showMessageDialog(pkf, "Sistem je nasao kupce po zadatim kriterijumima","Uspeh",JOptionPane.INFORMATION_MESSAGE);
+                if(mtk.getRowCount() == 0) { 
+                    JOptionPane.showMessageDialog(pkf, "Sistem nije nasao kupce po zadatim kriterijumima", 
+                        "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }else{
+                    JOptionPane.showMessageDialog(pkf, "Sistem je nasao kupce po zadatim kriterijumima","Uspeh",JOptionPane.INFORMATION_MESSAGE);
+                }*/
+                String uslov = "JOIN TipKupca ON Kupac.idTipKupca=TipKupca.idTipKupca ";
+                boolean imaUslov = false;
+                TipKupca tip = (TipKupca) pkf.getjComboBoxTipKupca().getSelectedItem();
+                if(pkf.getjTextFieldIme() != null &&
+                        !pkf.getjTextFieldIme().getText().trim().isEmpty()) {
+                    uslov += "WHERE Kupac.ime LIKE '%" + pkf.getjTextFieldIme().getText().trim() + "%' ";
+                    imaUslov = true;
+                }
+                if(pkf.getjTextFieldPrezime() != null &&
+                        !pkf.getjTextFieldPrezime().getText().trim().isEmpty()) {
+                    uslov += (imaUslov ? "AND " : "WHERE ") + "kupac.prezime LIKE '%" + pkf.getjTextFieldPrezime().getText().trim() + "%' ";
+                    imaUslov = true;
+                }
+                if(pkf.getjTextFieldEmail()!= null &&
+                        !pkf.getjTextFieldEmail().getText().trim().isEmpty()) {
+                    uslov += (imaUslov ? "AND " : "WHERE ") + "kupac.email LIKE '%" + pkf.getjTextFieldEmail().getText().trim()+ "%' ";
+                    imaUslov = true;
+                }
+                if(tip!=null){
+                    uslov+=(imaUslov ? "AND ": "WHERE ") + "kupac.IdTipKupca="+tip.getIdTipKupca();
+                }
+                
+                try{
+                    List<Kupac> listaKupaca = komunikacija.Komunikacija.getInstance().pretraziKupce(uslov);
+                    ModelTabeleKupac mtk = new ModelTabeleKupac(listaKupaca);
+                    pkf.getjTableKupci().setModel(mtk);
+                    if(mtk.getRowCount()==0){
+                        JOptionPane.showMessageDialog(pkf, "Sistem ne moze da nadje kupce po zadatim kriterijumima",
+                            "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+                    }else
+                        JOptionPane.showMessageDialog(pkf, "Sistem je nasao kupce po zadatim kriterijumima",
+                            "Uspeh",JOptionPane.INFORMATION_MESSAGE);
+                ;
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(pkf, "Greska pri komunikaciji sa serverom.", "Greska", JOptionPane.ERROR_MESSAGE);
+                    Logger.getLogger(PretraziRacunController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
         pkf.addBtnResetujActionListener(new ActionListener(){

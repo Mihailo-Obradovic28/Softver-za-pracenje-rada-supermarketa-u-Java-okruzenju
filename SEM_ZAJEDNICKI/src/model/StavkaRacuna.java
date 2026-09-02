@@ -7,12 +7,13 @@ package model;
 import java.sql.ResultSet;
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 /**
  *
  * @author Milosh
  */
 public class StavkaRacuna implements ApstraktniDomenskiObjekat{
-    private Racun racun;//ona nema ovo
+    private Racun racun;
     private int rb;
     private BigDecimal iznos;
     private int kolicina;
@@ -87,7 +88,23 @@ public class StavkaRacuna implements ApstraktniDomenskiObjekat{
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while(rs.next()){
+            int rbr = rs.getInt("stavkaracuna.rb");
+            BigDecimal iznosS = rs.getBigDecimal("stavkaracuna.iznos");
+            int kolicinaS = rs.getInt("stavkaracuna.kolicina");
+            BigDecimal jedinicnaCenaS = rs.getBigDecimal("stavkaracuna.jedinicnaCena");
+
+            int idRoba = rs.getInt("roba.idRoba");
+            String nazivRobe = rs.getString("roba.naziv");
+            BigDecimal cenaRobe = rs.getBigDecimal("roba.cena");
+            int stanjeZaliha = rs.getInt("roba.stanjeZaliha");
+            Roba robaS = new Roba(idRoba, nazivRobe, stanjeZaliha, cenaRobe);
+
+            StavkaRacuna sr = new StavkaRacuna(null, rbr, iznosS, kolicinaS, jedinicnaCenaS, robaS);
+            lista.add(sr);
+        }
+        return lista;
     }
 
     @Override

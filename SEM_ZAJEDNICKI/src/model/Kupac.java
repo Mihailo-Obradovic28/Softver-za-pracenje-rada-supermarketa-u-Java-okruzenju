@@ -99,8 +99,10 @@ public class Kupac implements ApstraktniDomenskiObjekat{
             return false;
         }
         final Kupac other = (Kupac) obj;
-        return Objects.equals(this.email, other.email);
+        return this.idKupac == other.idKupac;
     }
+
+
 
     @Override
     public String toString() {
@@ -111,7 +113,6 @@ public class Kupac implements ApstraktniDomenskiObjekat{
     public String vratiNazivTabele() {
         return "Kupac";
     }
-    ////TO DO ovo sigurno nije dobro opis u tip nije podesen
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         List<ApstraktniDomenskiObjekat>lista = new ArrayList<>();

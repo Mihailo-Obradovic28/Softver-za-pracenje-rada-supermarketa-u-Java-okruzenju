@@ -8,8 +8,10 @@ import controllers.DodajKupcaController;
 import controllers.DodajTerminDezurstvaController;
 import controllers.GlavnaFormaController;
 import controllers.LoginController;
+import controllers.PretraziRacunController;
 import controllers.PrikazKupacaController;
 import controllers.PrikazTipKupcaController;
+import controllers.UbaciRacunController;
 import forme.DodajKupcaForma;
 import forme.DodajTerminDezurstvaForma;
 import forme.GlavnaForma;
@@ -21,6 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 import model.Prodavac;
 import forme.FormaMod;
+import forme.PretraziRacunForma;
+import forme.UbaciRacunForma;
 
 /**
  *
@@ -36,6 +40,8 @@ public class Kordinator {
     private PrikazKupacaController prikazKupacaController;
     private DodajKupcaController dodajKupcaController;
     private DodajTerminDezurstvaController dodajTerminDezurstvaController;
+    private UbaciRacunController ubaciRacunController;
+    private PretraziRacunController pretraziRacunController;
     
     private PrikazTipKupcaController prikaziTipKupcaController;
     
@@ -107,6 +113,28 @@ public class Kordinator {
     public void otvoriDodajTerminDezurstvaFormu() {
         dodajTerminDezurstvaController = new DodajTerminDezurstvaController(new DodajTerminDezurstvaForma());
         dodajTerminDezurstvaController.otvoriFormu();
+    }
+
+    public void otvoriUbaciRacunFormu() {
+        
+        Prodavac ulogovani = getInstance().getUlogovan();
+        ubaciRacunController = new UbaciRacunController(new UbaciRacunForma());
+        ubaciRacunController.otvoriFormu(ulogovani,FormaMod.DODAJ);
+    }
+
+    public void otvoriPretraziRacunFormu() {
+        pretraziRacunController = new PretraziRacunController(new PretraziRacunForma());
+        pretraziRacunController.otvoriFormu();
+    }
+
+    public void otvoriPromeniRacunFormu() {
+        Prodavac ulogovani = getInstance().getUlogovan();
+        ubaciRacunController = new UbaciRacunController(new UbaciRacunForma());
+        ubaciRacunController.otvoriFormu(ulogovani,FormaMod.IZMENI);
+    }
+
+    public void osveziPretraziRacunFormu() {
+        pretraziRacunController.osveziFormu();
     }
       
   

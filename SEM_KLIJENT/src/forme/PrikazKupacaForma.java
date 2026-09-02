@@ -22,6 +22,7 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
      */
     public PrikazKupacaForma() {
         initComponents();
+        
     }
 
     /**
@@ -35,7 +36,6 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableKupci = new javax.swing.JTable();
-        jButtonBackToGlavna = new javax.swing.JButton();
         jButtonAzuriraj = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,7 +48,7 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
         jButtonPretrazi = new javax.swing.JButton();
         jButtonResetujPretragu = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTableKupci.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,13 +62,6 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTableKupci);
-
-        jButtonBackToGlavna.setText("vrati se nazad");
-        jButtonBackToGlavna.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackToGlavnaActionPerformed(evt);
-            }
-        });
 
         jButtonAzuriraj.setText("Detalji");
         jButtonAzuriraj.addActionListener(new java.awt.event.ActionListener() {
@@ -114,33 +107,32 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldEmail)
                             .addComponent(jComboBoxTipKupca, 0, 117, Short.MAX_VALUE))
+                        .addGap(95, 95, 95)
+                        .addComponent(jButtonPretrazi)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonPretrazi)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonAzuriraj)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                        .addComponent(jButtonResetujPretragu))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(96, 96, 96)
-                                .addComponent(jButtonBackToGlavna)))
-                        .addGap(30, 30, 30))))
+                            .addComponent(jButtonResetujPretragu)
+                            .addComponent(jButtonAzuriraj))
+                        .addContainerGap(218, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jButtonPretrazi)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,25 +140,19 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
                     .addComponent(jComboBoxTipKupca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonBackToGlavna)
-                        .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAzuriraj)
-                            .addComponent(jButtonResetujPretragu))
-                        .addGap(50, 50, 50)
-                        .addComponent(jButtonPretrazi)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(54, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jButtonResetujPretragu)
+                        .addGap(65, 65, 65)
+                        .addComponent(jButtonAzuriraj)
+                        .addGap(35, 140, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonBackToGlavnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackToGlavnaActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButtonBackToGlavnaActionPerformed
 
     private void jButtonAzurirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAzurirajActionPerformed
         // TODO add your handling code here:
@@ -217,7 +203,6 @@ public class PrikazKupacaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAzuriraj;
-    private javax.swing.JButton jButtonBackToGlavna;
     private javax.swing.JButton jButtonPretrazi;
     private javax.swing.JButton jButtonResetujPretragu;
     private javax.swing.JComboBox<TipKupca> jComboBoxTipKupca;

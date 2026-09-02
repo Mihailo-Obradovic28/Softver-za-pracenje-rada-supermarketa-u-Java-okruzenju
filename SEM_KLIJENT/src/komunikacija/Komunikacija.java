@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Kupac;
 import model.Prodavac;
+import model.Racun;
+import model.Roba;
+import model.StavkaRacuna;
 import model.TerminDezurstva;
 import model.TipKupca;
 
@@ -115,34 +118,34 @@ public class Komunikacija {
         Odgovor odg = (Odgovor)primalac.primi();
         
         listaTipova=(List<TipKupca>) odg.getOdgovor();
-        return listaTipova;
+        return listaTipova; 
     }
 
-    public void obrisiKupca(Kupac k) throws SocketException {
+    public void obrisiKupca(Kupac k) throws  Exception {
         Zahtev zahtev = new Zahtev(Operacija.OBRISI_KUPCA, k);
         posiljalac.posalji(zahtev);
         
         Odgovor odg = (Odgovor) primalac.primi();
         if(odg.getOdgovor()==null){
             System.out.println("USPEH");
-        }else{
-            System.out.println("GRESKA");
+        }else {
+            throw new Exception(((Exception)odg.getOdgovor()).getMessage()); 
         }
     }
 
-    public void dodajKupca(Kupac k) throws SocketException {
+    public void dodajKupca(Kupac k) throws  Exception {
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_KUPCA, k);
         posiljalac.posalji(zahtev);
         
         Odgovor odg = (Odgovor) primalac.primi();
         if(odg.getOdgovor()==null){
             System.out.println("USPEH");
-        }else{
-            System.out.println("GRESKA");
+        }else {
+            throw new Exception(((Exception)odg.getOdgovor()).getMessage()); 
         }
     }
 
-    public void azurirajKupca(Kupac k) throws SocketException {
+    public void azurirajKupca(Kupac k) throws  Exception {
         Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KUPCA, k);
         posiljalac.posalji(zahtev);
         
@@ -151,7 +154,7 @@ public class Komunikacija {
             System.out.println("USPEH");
             kordinator.Kordinator.getInstance().osveziPregledKupcaForma();
         }else{
-            System.out.println("GRESKA");
+              throw new Exception(((Exception)odg.getOdgovor()).getMessage()); 
         }
     }
 
@@ -163,6 +166,75 @@ public class Komunikacija {
             System.out.println("USPEH");
         }else{
             System.out.println("komunikacija :GRESKA");
+            throw (Exception) odg.getOdgovor();
+        }
+    }
+
+    public List<Roba> ucitajRobu() throws SocketException {
+        List<Roba>listaRobe = new ArrayList<>();
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_ROBU,null);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        listaRobe = (List<Roba>) odg.getOdgovor();
+        return listaRobe;
+        
+    }
+
+    public void ubaciRacun(Racun racun) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.KREIRAJ_RACUN, racun);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if(odg.getOdgovor() == null){
+            System.out.println("USPEH");
+        }else {
+            throw new Exception(((Exception)odg.getOdgovor()).getMessage()); 
+        }
+    }
+
+    public List<Prodavac> ucitajProdavce() throws Exception {
+        List<Prodavac>listaProdavaca = new ArrayList<>();
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_PRODAVCE, null);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        listaProdavaca = (List<Prodavac>) odg.getOdgovor();
+        return listaProdavaca;
+    }
+
+    public List<Racun> ucitajRacune() throws SocketException {
+        List<Racun> listaRacuna = new ArrayList<>();
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_RACUNE, null);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        listaRacuna = (List<Racun>) odg.getOdgovor();
+        return listaRacuna;
+    }
+
+    public List<Racun> pretraziRacune(String uslov) throws SocketException {
+        Zahtev zahtev = new Zahtev(Operacija.PRETRAZI_RACUNE, uslov);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        return (List<Racun>) odg.getOdgovor();
+    }
+
+    public List<StavkaRacuna> ucitajStavkeRacuna(Racun r) throws SocketException {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_STAVKE_RACUNA, r);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        return (List<StavkaRacuna>) odg.getOdgovor();
+    }
+
+    public List<Kupac> pretraziKupce(String uslov) throws SocketException {
+        Zahtev zahtev = new Zahtev(Operacija.PRETRAZI_KUPCE, uslov);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        return (List<Kupac>) odg.getOdgovor();
+    }
+
+    public void promeniRacun(Racun promenjen) throws  Exception {
+        Zahtev zahtev = new Zahtev(Operacija.PROMENI_RACUN, promenjen);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if(odg.getOdgovor()!=null){
             throw (Exception) odg.getOdgovor();
         }
     }

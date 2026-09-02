@@ -21,7 +21,7 @@ public class DodajKupcaForma extends javax.swing.JFrame {
      */
     public DodajKupcaForma() {
         initComponents();
-    }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,11 +43,10 @@ public class DodajKupcaForma extends javax.swing.JFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldGodine = new javax.swing.JTextField();
         jComboBoxTipKupca = new javax.swing.JComboBox<>();
-        jButtonVratiNaGlavnu = new javax.swing.JButton();
         jButtonAzuriraj = new javax.swing.JButton();
         jButtonObrisi = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("prezime");
 
@@ -61,14 +60,12 @@ public class DodajKupcaForma extends javax.swing.JFrame {
 
         jButtonDodajKupca.setText("Dodaj");
 
-        jButtonVratiNaGlavnu.setText("vrati na glavnu formu");
-        jButtonVratiNaGlavnu.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAzuriraj.setText("Azuriraj");
+        jButtonAzuriraj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVratiNaGlavnuActionPerformed(evt);
+                jButtonAzurirajActionPerformed(evt);
             }
         });
-
-        jButtonAzuriraj.setText("Azuriraj");
 
         jButtonObrisi.setText("Obrisi");
 
@@ -77,29 +74,24 @@ public class DodajKupcaForma extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jTextFieldIme, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldPrezime)
-                                    .addComponent(jTextFieldGodine)
-                                    .addComponent(jComboBoxTipKupca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(19, 19, 19)
+                        .addComponent(jTextFieldIme, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonVratiNaGlavnu)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldPrezime)
+                            .addComponent(jTextFieldGodine)
+                            .addComponent(jComboBoxTipKupca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonDodajKupca, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -137,19 +129,16 @@ public class DodajKupcaForma extends javax.swing.JFrame {
                     .addComponent(jComboBoxTipKupca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAzuriraj))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonDodajKupca)
-                    .addComponent(jButtonVratiNaGlavnu))
+                .addComponent(jButtonDodajKupca)
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonVratiNaGlavnuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVratiNaGlavnuActionPerformed
+    private void jButtonAzurirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAzurirajActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButtonVratiNaGlavnuActionPerformed
+    }//GEN-LAST:event_jButtonAzurirajActionPerformed
 
     
 
@@ -193,7 +182,6 @@ public class DodajKupcaForma extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAzuriraj;
     private javax.swing.JButton jButtonDodajKupca;
     private javax.swing.JButton jButtonObrisi;
-    private javax.swing.JButton jButtonVratiNaGlavnu;
     private javax.swing.JComboBox<TipKupca> jComboBoxTipKupca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

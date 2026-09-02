@@ -18,6 +18,9 @@ import komunikacija.Primalac;
 import komunikacija.Zahtev;
 import model.Kupac;
 import model.Prodavac;
+import model.Racun;
+import model.Roba;
+import model.StavkaRacuna;
 import model.TerminDezurstva;
 import model.TipKupca;
 
@@ -100,6 +103,65 @@ public void run() {
                         controller.Controller.getInstance().dodajDezurstvo(td);
                         odgovor.setOdgovor(null);
                     }catch(Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+                case UCITAJ_ROBU:
+                    List<Roba> listaRobe = controller.Controller.getInstance().ucitajRobu();
+                    odgovor.setOdgovor(listaRobe);
+                    break;
+                case KREIRAJ_RACUN:
+                    try{
+                        Racun racun = (Racun) zahtev.getParametar();
+                        controller.Controller.getInstance().ubaciRacun(racun);
+                        odgovor.setOdgovor(null);
+                    }catch(Exception e){
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+                case UCITAJ_PRODAVCE:
+                    List<Prodavac> prodavci = controller.Controller.getInstance().ucitajProdavce();
+                    odgovor.setOdgovor(prodavci);
+                    break;
+                case UCITAJ_RACUNE:
+                    List<Racun> racuni = controller.Controller.getInstance().ucitajRacune();
+                    odgovor.setOdgovor(racuni);
+                    break;
+                case PRETRAZI_RACUNE:
+                    try {
+                        String uslov = (String) zahtev.getParametar();
+                        List<Racun> pretRacuni = controller.Controller.getInstance().pretraziRacune(uslov);
+                        odgovor.setOdgovor(pretRacuni);
+                    } catch(Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+                case UCITAJ_STAVKE_RACUNA:
+                    try{
+                        Racun r = (Racun) zahtev.getParametar();
+                        List<StavkaRacuna> stavke = controller.Controller.getInstance().ucitajStavkeRacuna(r);
+                        odgovor.setOdgovor(stavke);
+                    }catch(Exception e){
+                        odgovor.setOdgovor(e);
+                    }
+                    
+                    break;
+                case PRETRAZI_KUPCE:
+                    try {
+                        String uslov = (String) zahtev.getParametar();
+                        List<Kupac> pretraziKupce = controller.Controller.getInstance().pretraziKupce(uslov);
+                        odgovor.setOdgovor(pretraziKupce);
+                    } catch(Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+                case PROMENI_RACUN:
+                    try{
+                        Racun promenjen = (Racun) zahtev.getParametar();
+                        controller.Controller.getInstance().promeniRacun(promenjen);
+                        odgovor.setOdgovor(null);
+                    }catch(Exception e){
+                        
                         odgovor.setOdgovor(e);
                     }
                     break;

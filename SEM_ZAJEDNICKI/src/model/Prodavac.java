@@ -73,12 +73,12 @@ public class Prodavac implements ApstraktniDomenskiObjekat{
 
     @Override
     public String toString() {
-        return ime+" "+prezime+",user: "+korisnickoIme+",pass:"+sifra;
+        return ime+" "+prezime;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         return hash;
     }
 
@@ -94,11 +94,10 @@ public class Prodavac implements ApstraktniDomenskiObjekat{
             return false;
         }
         final Prodavac other = (Prodavac) obj;
-        if (!Objects.equals(this.korisnickoIme, other.korisnickoIme)) {
-            return false;
-        }
-        return Objects.equals(this.sifra, other.sifra);
+        return this.idProdavac == other.idProdavac;
     }
+
+ 
 
  
 

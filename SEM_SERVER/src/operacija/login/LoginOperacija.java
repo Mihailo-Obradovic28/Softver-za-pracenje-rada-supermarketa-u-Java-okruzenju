@@ -30,7 +30,9 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
         System.out.println("KLASA LoginOperacija SO: "+sviProdavci);
         
         for (Prodavac p : sviProdavci) {
-            if(p.equals((Prodavac)param)){
+            //if(p.equals((Prodavac)param)){
+              if(p.getKorisnickoIme().equals(((Prodavac)param).getKorisnickoIme()) &&
+                      p.getSifra().equals(((Prodavac)param).getSifra())){
                 prodavac=p;
                 
                 return;

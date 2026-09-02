@@ -17,14 +17,18 @@ import model.TipKupca;
  * @author Milosh
  */
 public class ModelTabeleKupac extends AbstractTableModel{
-    
+    //da ne radim preko filtriranja liste vec da pravim isto sa upitom ko u racunu
     List<Kupac> lista = new ArrayList<>();
     String [] kolone = {"idKupac","ime","prezime","email","godine","TipKupca"};
-
+    
+    private  List<Kupac> original = new ArrayList<>();
+    
     public ModelTabeleKupac(List<Kupac> lista) {
         if (lista != null) {
             this.lista = lista;
+            this.original = new ArrayList<>(this.lista);
         }
+        
     }
     
     
@@ -72,7 +76,7 @@ public class ModelTabeleKupac extends AbstractTableModel{
     }
 
     public void pretrazi(String name, String lastname, String email, TipKupca tip) {
-        List<Kupac> filteredList = lista.stream()
+        List<Kupac> filteredList = original.stream()
                 .filter(k ->(name==null || name.isEmpty() || k.getIme().toLowerCase().contains(name.toLowerCase())))
                 .filter(k -> (lastname==null || lastname.isEmpty() || k.getPrezime().toLowerCase().contains(lastname.toLowerCase())))
                 .filter(k -> (email==null || email.isEmpty() || k.getEmail().toLowerCase().contains(email.toLowerCase())))

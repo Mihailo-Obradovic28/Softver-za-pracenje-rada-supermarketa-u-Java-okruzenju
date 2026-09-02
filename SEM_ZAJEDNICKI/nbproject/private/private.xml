@@ -3,14 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/komunikacija/Posiljalac.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/komunikacija/Operacija.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/model/ApstraktniDomenskiObjekat.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/model/TipKupca.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/model/Racun.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/komunikacija/Primalac.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/model/Kupac.java</file>
-            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/SEM_ZAJEDNICKI/src/model/StavkaRacuna.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/komunikacija/Primalac.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/ApstraktniDomenskiObjekat.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/Roba.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/komunikacija/Zahtev.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/komunikacija/Posiljalac.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/Prodavac.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/Kupac.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/TerminDezurstva.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/StavkaRacuna.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/komunikacija/Odgovor.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/komunikacija/Operacija.java</file>
+            <file>file:/C:/Users/darkside/Documents/NetBeansProjects/seminarski/SEM_ZAJEDNICKI/src/model/Racun.java</file>
         </group>
     </open-files>
 </project-private>

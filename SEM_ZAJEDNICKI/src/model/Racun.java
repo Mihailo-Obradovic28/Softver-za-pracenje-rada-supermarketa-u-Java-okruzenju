@@ -88,7 +88,27 @@ public class Racun implements ApstraktniDomenskiObjekat{
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while(rs.next()){
+            int idR = rs.getInt("racun.idRacun");
+            LocalDateTime datum = rs.getTimestamp("racun.datumIzdavanja").toLocalDateTime();
+            BigDecimal iznos = rs.getBigDecimal("racun.ukupanIznos");
+            
+            int idKupac = rs.getInt("kupac.idKupac");
+            String imeKupac = rs.getString("kupac.ime");
+            String prezimeKupac = rs.getString("kupac.prezime");
+            Kupac k = new Kupac(idKupac, imeKupac, prezimeKupac, null, 0, null);
+            
+            int idProdavac = rs.getInt("prodavac.idProdavac");
+            String imeProdavac = rs.getString("prodavac.ime");
+            String prezimeProdavac = rs.getString("prodavac.prezime");
+            Prodavac p = new Prodavac(idProdavac, imeProdavac, prezimeProdavac, null, null);
+            
+            Racun r = new Racun(idR, datum, iznos, k, p);
+            lista.add(r);
+            
+        }
+        return lista;
     }
 
     @Override
@@ -98,7 +118,7 @@ public class Racun implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return "'"+datumIzdavanja+"',"+ukupanIznos+","+kupac.getIdKupac()+","+prodavac.getIdProdavac();
+        return "'"+datumIzdavanja.toString().replace("T", " ")+"',"+ukupanIznos+","+kupac.getIdKupac()+","+prodavac.getIdProdavac();
     }
 
     @Override
